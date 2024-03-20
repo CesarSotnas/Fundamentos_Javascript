@@ -173,3 +173,74 @@ Humano.prototype.idade = "Não definida";
 
 console.log(cesar.idade);
 console.log(Humano.prototype.idade);
+
+//12 - Symbols
+class Aviao {
+    constructor(marca, turbina) {
+        this.marca = marca;
+        this.turbina = turbina;
+    }
+}
+
+const asas = Symbol()
+
+Aviao.prototype[asas] = 2
+
+const boeing = new Aviao("Boeing", 10);
+
+console.log(boeing);
+
+console.log(boeing[asas]);
+
+// 13 - Getter e Setters
+class Post {
+    constructor(titulo, descricao, tags) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.tags = tags;
+    }
+
+    get exibirTitulo() {
+        return `Você está lendo: ${this.titulo}`;
+    }
+
+    set adicionarTags(tags) {
+        const tagsArray = tags.split(", ");
+        this.tags = tagsArray;
+    }
+}
+
+const myPost = new Post("Algum post", "É um post sobre programação");
+
+console.log(myPost);
+console.log(myPost.exibirTitulo);
+
+myPost.adicionarTags = "programação, javascript, js";
+
+console.log(myPost);
+
+//14 - Herança
+class Mamifero {
+    constructor(patas) {
+        this.patas = patas
+    }
+}
+
+class Lobo extends Mamifero {
+    constructor(patas, nome) {
+        super(patas, patas);
+        this.nome = nome;
+    }
+}
+
+const shark = new Lobo(4, "Shark");
+
+console.log(shark);
+
+// 15 - Instanceof
+console.log(shark instanceof Lobo);
+console.log(Lobo instanceof Mamifero);
+
+console.log(new Lobo(4, "teste") instanceof Mamifero);
+
+console.log(new Post("a", "b") instanceof Lobo);
